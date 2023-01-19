@@ -7,8 +7,6 @@ const privatekey = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
 
 async function getTokenResponse(token) {
-
-    console.log('error ' + packageName);
     
     let jwtClient = new google.auth.JWT(
         privatekey.client_email,
@@ -28,7 +26,8 @@ async function getTokenResponse(token) {
 
     );
 
-
+    console.log('error ' + packageName);
+    
     console.log(res.data.tokenPayloadExternal);
 
     return res.data.tokenPayloadExternal
