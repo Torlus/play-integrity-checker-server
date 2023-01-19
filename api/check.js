@@ -27,8 +27,7 @@ async function getTokenResponse(token) {
     );
 
     console.log('error ' + packageName);
-    
-    console.log(res.data.tokenPayloadExternal);
+    // console.log(res.data.tokenPayloadExternal);
 
     return res.data.tokenPayloadExternal
 }
