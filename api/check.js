@@ -15,8 +15,6 @@ async function getTokenResponse(token) {
         ['https://www.googleapis.com/auth/playintegrity']);
 
     google.options({ auth: jwtClient });
-
-    res.status(200).send({ 'error': 'BeforeGoogle API error.\n' + e.message }); 
     
     const res = await playintegrity.v1.decodeIntegrityToken(
         {
@@ -37,6 +35,8 @@ module.exports = async (req, res) => {
 
     const { token = 'none' } = req.query
 
+    res.status(200).send({ 'error': 'BeforeGoogle API error.\n' + e.message })
+    
     if (token == 'none') {
         res.status(400).send({ 'error': 'No token provided' })
         return
