@@ -8,8 +8,6 @@ const privatekey = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS)
 
 async function getTokenResponse(token) {
     
-    console.log('error ' + packageName); 
-    
     let jwtClient = new google.auth.JWT(
         privatekey.client_email,
         null,
@@ -18,6 +16,8 @@ async function getTokenResponse(token) {
 
     google.options({ auth: jwtClient });
 
+    res.status(200).send({ 'error': 'BeforeGoogle API error.\n' + e.message }); 
+    
     const res = await playintegrity.v1.decodeIntegrityToken(
         {
             packageName: packageName,
@@ -29,8 +29,6 @@ async function getTokenResponse(token) {
     );
 
     // console.log(res.data.tokenPayloadExternal);
-
-    
     
     return res.data.tokenPayloadExternal
 }
