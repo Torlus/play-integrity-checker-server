@@ -34,13 +34,13 @@ async function getTokenResponse(token) {
 module.exports = async (req, res) => {
 
     const { token = 'none' } = req.query
-
-    res.status(200).send({ 'error': 'BeforeGoogle API error.\n' + e.message })
-    
+   
     if (token == 'none') {
         res.status(400).send({ 'error': 'No token provided' })
         return
     }
+
+    res.status(200).send({ 'error': 'BeforeGoogle API error.\n' + req })
 
     getTokenResponse(token)
         .then(data => {
