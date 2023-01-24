@@ -40,8 +40,6 @@ module.exports = async (req, res) => {
         return
     }
 
-    res.status(200).send({ 'error': 'BeforeGoogle API error.\n' + req })
-
     getTokenResponse(token)
         .then(data => {
             res.status(200).send(data)
